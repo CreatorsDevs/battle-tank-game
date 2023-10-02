@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f441ce38e5f5554ca2529db44057258, type: 3}
+  m_Name: 10 Bullets Fired
+  m_EditorClassIdentifier: 
+  achievementName: 10 Bullets Fired!
+  description: You have fired 10 bullets!
+  isUnlocked: 0
+  type: 0
+  valueToUnlock: 10
+  unlockCondition: 4

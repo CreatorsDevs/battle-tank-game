@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class AssetManager : SingletonGeneric<AssetManager>
 {
-    public GameObject LevelPrefab;
+    public GameObject levelPrefab;
+    public GameObject achievementCanvasPrefab;
+
+    public int BulletsFired { get; set; }
+    public int EnemyBulletsFired { get; set; }
+    public int EnemiesKilled { get; set; }
+
     public List<EnemyView> EnemyViews { get { return m_EnemyViews; } }
     public TankView TankView { get { return m_TankView; } }
     public GameObject Level { get { return m_Level; } }
+    public GameObject AchievementCanvas { get { return m_AchievementCanvas; } }
     public ShellService ShellService { get { return m_ShellService; } }
 
-    private GameObject m_Level;
+    private GameObject m_Level, m_AchievementCanvas;
     private TankView m_TankView;
     private ShellService m_ShellService;
     private List<EnemyView> m_EnemyViews = new List<EnemyView>();
@@ -30,7 +37,9 @@ public class AssetManager : SingletonGeneric<AssetManager>
 
     private void Start()
     {
-        m_Level = Instantiate(LevelPrefab) as GameObject;
+        m_Level = Instantiate(levelPrefab) as GameObject;
+        m_AchievementCanvas = Instantiate(achievementCanvasPrefab) as GameObject;
+        m_AchievementCanvas.SetActive(false);
     }
 
     public void ClearLevel()
