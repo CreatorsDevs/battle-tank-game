@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: RedTank
   m_EditorClassIdentifier: 
   type: 1
-  speed: 15
+  speed: 12
   turnSpeed: 140
-  health: 100
+  health: 500
   damage: 25
   shellLayer:
     serializedVersion: 2

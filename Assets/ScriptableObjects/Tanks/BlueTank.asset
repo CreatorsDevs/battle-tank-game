@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 3
   speed: 10
   turnSpeed: 120
-  health: 75
+  health: 500
   damage: 50
   shellLayer:
     serializedVersion: 2

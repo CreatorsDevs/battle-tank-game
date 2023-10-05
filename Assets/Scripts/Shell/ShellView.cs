@@ -1,31 +1,37 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShellView : MonoBehaviour
 {
-    private ShellController ShellController { get; set; }
+    public ShellController ShellController { get; private set; }
     public void SetShellController(ShellController shellController)
     {
         ShellController = shellController;
     }
 
-    public Rigidbody GetRigidbody() 
+    public Rigidbody GetRigidbody()
     {
         return GetComponent<Rigidbody>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        if (ShellController != null)
-        {
-            ShellController.Shot();
-            Destroy(gameObject, 5f);
-        }
-        else
-        {
-            return;
-        }   
+        ShellController?.Shoot();
+        if(ShellController != null)
+            StartCoroutine(ReturnToBulletPool());
+    }
+
+    private void OnDisable()
+    {
+        ShellController?.ResetVelocity();
+    }
+
+    private IEnumerator ReturnToBulletPool()
+    {
+        // Wait for the life of shell and then return the shell to the pool.
+        yield return new WaitForSeconds(ShellController.ShellModel.Life);
+        BulletObjectPool.Instance.ReturnObject(gameObject);
+        StopCoroutine(ReturnToBulletPool());
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -34,7 +40,10 @@ public class ShellView : MonoBehaviour
         if ((damagable = collision.gameObject.GetComponent<IDamagable>()) != null)
         {
             // Apply appropriate damage to the damagable.
-            damagable.TakeDamage(ShellController.GetShellModel().Damage);
+            damagable.TakeDamage(ShellController.ShellModel.Damage);
         }
+
+        // Return bullet to pool.
+        BulletObjectPool.Instance.ReturnObject(gameObject);
     }
 }

@@ -6,6 +6,7 @@ public class AssetManager : SingletonGeneric<AssetManager>
 {
     public GameObject levelPrefab;
     public GameObject achievementCanvasPrefab;
+    public GameObject enemyWaveCanvasPrefab;
 
     public int BulletsFired { get; set; }
     public int EnemyBulletsFired { get; set; }
@@ -15,9 +16,10 @@ public class AssetManager : SingletonGeneric<AssetManager>
     public TankView TankView { get { return m_TankView; } }
     public GameObject Level { get { return m_Level; } }
     public GameObject AchievementCanvas { get { return m_AchievementCanvas; } }
+    public GameObject EnemyWaveCanvas { get { return m_EnemyWaveCanvas; } }
     public ShellService ShellService { get { return m_ShellService; } }
 
-    private GameObject m_Level, m_AchievementCanvas;
+    private GameObject m_Level, m_AchievementCanvas, m_EnemyWaveCanvas;
     private TankView m_TankView;
     private ShellService m_ShellService;
     private List<EnemyView> m_EnemyViews = new List<EnemyView>();
@@ -38,8 +40,12 @@ public class AssetManager : SingletonGeneric<AssetManager>
     private void Start()
     {
         m_Level = Instantiate(levelPrefab) as GameObject;
+        
         m_AchievementCanvas = Instantiate(achievementCanvasPrefab) as GameObject;
         m_AchievementCanvas.SetActive(false);
+
+        m_EnemyWaveCanvas = Instantiate(enemyWaveCanvasPrefab) as GameObject;
+        m_EnemyWaveCanvas.SetActive(true);
     }
 
     public void ClearLevel()

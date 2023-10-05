@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GreyEnemy
   m_EditorClassIdentifier: 
   type: 1
-  speed: 12
+  speed: 10
   turnSpeed: 180
-  health: 40
-  damage: 10
+  health: 60
+  damage: 20
   fireRate: 0.3
   detectionRadius: 18
   attackRange: 5

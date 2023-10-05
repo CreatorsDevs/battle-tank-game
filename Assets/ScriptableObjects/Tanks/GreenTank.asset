@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GreenTank
   m_EditorClassIdentifier: 
   type: 2
-  speed: 20
+  speed: 15
   turnSpeed: 180
-  health: 50
+  health: 500
   damage: 20
   shellLayer:
     serializedVersion: 2

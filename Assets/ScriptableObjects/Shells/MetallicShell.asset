@@ -15,5 +15,6 @@ MonoBehaviour:
   type: 2
   speed: 25
   damage: 20
+  life: 5
   shellView: {fileID: 2152102161263612093, guid: 2ec606c820f72184c90c4beb66deeccc,
     type: 3}

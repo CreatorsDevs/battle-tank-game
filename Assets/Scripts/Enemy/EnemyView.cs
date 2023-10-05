@@ -29,11 +29,11 @@ public class EnemyView : MonoBehaviour, IDamagable
     private float m_IdleTime = 0f, m_TimeToSwitchToPatrol = 2f;
 
     // Implement visual aspects of the enemy here
-    private void Start()
+    private void OnEnable()
     {
         Debug.Log("Enemy view created!");
         AssetManager.Instance.AddEnemyView(this);
-        if (m_NavMeshAgent = GetComponent<NavMeshAgent>())
+        if ((m_NavMeshAgent = GetComponent<NavMeshAgent>()) && EnemyController != null && EnemyController.GetEnemyModel() != null)
         { 
             m_NavMeshAgent.speed = EnemyController.GetEnemyModel().Speed;
             m_NavMeshAgent.angularSpeed = EnemyController.GetEnemyModel().TurnSpeed;
@@ -41,6 +41,16 @@ public class EnemyView : MonoBehaviour, IDamagable
 
         // Default State = Idle
         SetState(new IdleState(this));
+    }
+
+    public void ResetHealth()
+    {
+        EnemyController.ResetHealth();
+    }
+
+    public Vector3 GetRandomPosition()
+    {
+        return EnemyController.GetRandomSpawnPosition();
     }
 
     private void Update()

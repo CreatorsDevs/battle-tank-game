@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba212ff66cb2d9b419092eacf0db096c, type: 3}
-  m_Name: GoldShell
+  m_Script: {fileID: 11500000, guid: c39997b341af88f43aab61b97430a12a, type: 3}
+  m_Name: Enemy Wave
   m_EditorClassIdentifier: 
-  type: 1
-  speed: 20
-  damage: 30
-  life: 5
-  shellView: {fileID: -4993322213122967851, guid: 52515ebfd15370e4db38ffcaa5cdfbb9,
-    type: 3}
+  numberOfWaves: 5
+  enemiesInEachWave: 10

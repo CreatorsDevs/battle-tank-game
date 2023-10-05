@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class ShellController
 {
-    private ShellModel ShellModel { get; }
-    private ShellView ShellView { get; }
+    public ShellModel ShellModel { get; }
+    public ShellView ShellView { get; }
     private Transform spawn;
-    private Rigidbody shellRb;
+    private readonly Rigidbody shellRb;
+
+    public void SetSpawn(Transform spawn) => this.spawn = spawn;
 
     public ShellController(ShellModel shellModel, ShellView shellView, LayerMask shellLayer, Transform spawnTransform)
     {
@@ -16,22 +18,33 @@ public class ShellController
         ShellView.SetShellController(this);
         shellRb = ShellView.GetRigidbody();
     }
-    public void Shot()
+
+    public ShellController(ShellModel shellModel, ShellView shellView)
     {
-        shellRb.velocity = spawn.forward * ShellModel.Speed;
-    }
-    public ShellModel GetShellModel()
-    {
-        return ShellModel;
+        ShellModel = shellModel;
+        ShellView = GameObject.Instantiate<ShellView>(shellView, Vector3.zero, Quaternion.identity);
+        ShellView.SetShellController(this);
+        shellRb = ShellView.GetRigidbody();
     }
 
-    private int GetLayerFromMask(LayerMask mask)
+    public void Shoot()
+    {
+        if (!spawn || !shellRb) return;
+        shellRb.velocity = spawn.forward * ShellModel.Speed;
+    }
+
+    public void ResetVelocity()
+    {
+        shellRb.velocity = Vector3.zero;
+    }
+
+    public int GetLayerFromMask(LayerMask mask)
     {
         int layerNumber = 0;
         int layer = mask.value;
         while (layer > 0)
         {
-            layer = layer >> 1;
+            layer >>= 1;
             layerNumber++;
         }
 

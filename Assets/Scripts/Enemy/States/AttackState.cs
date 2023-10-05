@@ -46,7 +46,11 @@ namespace EnemyStates
             if (Time.time >= m_NextFireTime)
             {
                 AchievementSystem.Instance.NotifyEnemyBulletFired(++AssetManager.Instance.EnemyBulletsFired);
-                AssetManager.Instance.ShellService.SpawnShell(enemyView.transform, enemyView.ShellLayer, enemyView.Damage);
+                
+                GameObject shellViewGameObject = BulletObjectPool.Instance.GetObject();
+                ShellView shellView = shellViewGameObject.GetComponent<ShellView>();
+                ShellService.Instance.SetShellParameters(shellView, enemyView.transform, enemyView.ShellLayer, enemyView.Damage);
+                shellView.gameObject.SetActive(true);
                 m_NextFireTime = Time.time + enemyView.FireRate;
             }
         }
