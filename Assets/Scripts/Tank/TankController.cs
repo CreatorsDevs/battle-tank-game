@@ -47,7 +47,12 @@ public class TankController
         tank_IsMoving = Mathf.Abs(tank_MovementInputValue) > 0.1f;
         tank_IsTurning = Mathf.Abs(tank_TurnInputValue) > 0.1f;
 
-        if(Input.GetMouseButton(0) && Time.time >= nextFireTime) { TankView.Shoot(); nextFireTime = Time.time + fireRate; }
+        if(Input.GetMouseButton(0) && Time.time >= nextFireTime) 
+        {
+            AchievementSystem.Instance.NotifyBulletFired(++AssetManager.Instance.BulletsFired);
+            TankView.Shoot();
+            nextFireTime = Time.time + fireRate; 
+        }
 
         EngineAudio();
     }

@@ -41,6 +41,7 @@ public class EnemyController
 
     public void DestroyEnemy()
     {
+        AchievementSystem.Instance.NotifyEnemyKilled(++AssetManager.Instance.EnemiesKilled);
         GameObject explosion = GameObject.Instantiate(EnemyModel.Explosion, EnemyView.transform.position, Quaternion.identity);
         GameObject.Destroy(explosion, 1.5f);
         AssetManager.Instance.RemoveEnemyView(EnemyView);
