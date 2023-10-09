@@ -203,6 +203,8 @@ MonoBehaviour:
     type: 3}
   achievementCanvasPrefab: {fileID: 2612194175227100124, guid: 7587bf6a5b82e8344bd3f3782a15daa9,
     type: 3}
+  enemyWaveCanvasPrefab: {fileID: 2612194175227100124, guid: f977c60de69010f468fc1e7fce1bb08e,
+    type: 3}
 --- !u!4 &141942644
 Transform:
   m_ObjectHideFlags: 0
@@ -249,7 +251,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyScriptableObjectList: {fileID: 11400000, guid: d3179b834802ced49ab1b1141a204bf0,
     type: 2}
-  numberOfEnemies: 2
 --- !u!4 &170745935
 Transform:
   m_ObjectHideFlags: 0
@@ -257,6 +258,67 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170745933}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &527456267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 527456270}
+  - component: {fileID: 527456269}
+  - component: {fileID: 527456268}
+  m_Layer: 0
+  m_Name: Enemy Object Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &527456268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527456267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7788ecbcc26e42b4bbb171a19b04e31c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EnemyWave: {fileID: 11400000, guid: 1bab181ae5d10d0419d37bd85928c59d, type: 2}
+  m_EnemyWavesRemainingText: {fileID: 0}
+  m_EnemiesRemainingText: {fileID: 0}
+--- !u!114 &527456269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527456267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eaa41f7a8ee6304a8805ca9fc6be23b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPools: []
+--- !u!4 &527456270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527456267}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -329,6 +391,52 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &916796955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 916796957}
+  - component: {fileID: 916796956}
+  m_Layer: 0
+  m_Name: Bullet Object Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &916796956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916796955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7c98e1e24cb6748a1c405b9feefb29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPools: []
+  initialPoolSize: 30
+--- !u!4 &916796957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916796955}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1163227891
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,3 +938,5 @@ SceneRoots:
   - {fileID: 114208425}
   - {fileID: 1163227894}
   - {fileID: 141942644}
+  - {fileID: 916796957}
+  - {fileID: 527456270}

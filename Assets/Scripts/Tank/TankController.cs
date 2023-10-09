@@ -114,7 +114,10 @@ public class TankController
 
     public void ShootShell()
     {
-        AssetManager.Instance.ShellService.SpawnShell(TankView.transform, TankModel.ShellLayer, TankModel.Damage);
+        GameObject shellViewGameObject = BulletObjectPool.Instance.GetObject();
+        ShellView shellView = shellViewGameObject.GetComponent<ShellView>();
+        ShellService.Instance.SetShellParameters(shellView, TankView.transform, TankModel.ShellLayer, TankModel.Damage);
+        shellView.gameObject.SetActive(true);
     }
 
     public TankModel GetTankModel()

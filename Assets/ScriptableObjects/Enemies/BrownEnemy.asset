@@ -15,8 +15,8 @@ MonoBehaviour:
   type: 2
   speed: 10
   turnSpeed: 180
-  health: 30
-  damage: 10
+  health: 50
+  damage: 20
   fireRate: 0.2
   detectionRadius: 18
   attackRange: 5

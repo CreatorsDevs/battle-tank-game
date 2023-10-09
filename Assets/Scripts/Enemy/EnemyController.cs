@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class EnemyController
 {
-    private EnemyModel EnemyModel { get; }
-    private EnemyView EnemyView { get; }
+    public EnemyModel EnemyModel { get; }
+    public EnemyView EnemyView { get; }
 
-    private Vector3 GetRandomSpawnPosition()
+    public Vector3 GetRandomSpawnPosition()
     {
-        float randomX = Random.Range(-10,10);
-        float randomZ = Random.Range(-10,10);
+        float randomX = Random.Range(-25,25);
+        float randomZ = Random.Range(-25,25);
         return new Vector3(randomX, 0f, randomZ);
     }
     public EnemyController(EnemyModel enemyModel, EnemyView enemyView)
@@ -20,6 +20,11 @@ public class EnemyController
     public EnemyModel GetEnemyModel()
     {
         return EnemyModel;
+    }
+
+    public void ResetHealth()
+    {
+        EnemyModel.Health = EnemyModel.MaxHealth;
     }
 
     public bool TakeDamage(float damage)
@@ -41,10 +46,11 @@ public class EnemyController
 
     public void DestroyEnemy()
     {
+        EnemyWave.Instance.EnemiesAlive--;
         AchievementSystem.Instance.NotifyEnemyKilled(++AssetManager.Instance.EnemiesKilled);
         GameObject explosion = GameObject.Instantiate(EnemyModel.Explosion, EnemyView.transform.position, Quaternion.identity);
         GameObject.Destroy(explosion, 1.5f);
         AssetManager.Instance.RemoveEnemyView(EnemyView);
-        GameObject.Destroy(EnemyView.gameObject);
+        EnemyObjectPool.Instance.ReturnObject(EnemyView.gameObject);
     }
 }
