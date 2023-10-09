@@ -51,7 +51,7 @@ public class AssetManager : SingletonGeneric<AssetManager>
     public void ClearLevel()
     {
         // Destroy Tank
-        StartCoroutine(DestroyTank());
+        DestroyTank();
 
         // Destroy Enemies
         StartCoroutine(DestroyEnemies());
@@ -85,9 +85,9 @@ public class AssetManager : SingletonGeneric<AssetManager>
             }
         }
     }
-    private IEnumerator DestroyTank()
+    private void DestroyTank()
     {
-        yield return new WaitForSeconds(0);
+        //yield return new WaitForSeconds(0);
         if (m_TankView)
         {
             m_TankView.DestroyTank();

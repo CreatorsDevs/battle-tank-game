@@ -13,7 +13,7 @@ public class ShellService : SingletonGeneric<ShellService>
     {
         int randomNumber = (int)Random.Range(0f, shellScriptableObjectList.shells.Length);
         ShellScriptableObject shellObject = shellScriptableObjectList.shells[randomNumber];
-        Debug.Log("Created shell of type: " + shellObject.name);
+        //Debug.Log("Created shell of type: " + shellObject.name);
         ShellModel model = new(shellObject, damage);
         ShellController shellController = new(model, shellObject.shellView, shellLayer, spawn);
 
@@ -25,7 +25,7 @@ public class ShellService : SingletonGeneric<ShellService>
     {
         int randomNumber = (int)Random.Range(0f, shellScriptableObjectList.shells.Length);
         ShellScriptableObject shellObject = shellScriptableObjectList.shells[randomNumber];
-        Debug.Log("Created shell of type: " + shellObject.name);
+        //Debug.Log("Created shell of type: " + shellObject.name);
         ShellModel model = new(shellObject, shellObject.damage);
         ShellController shellController = new(model, shellObject.shellView);
 

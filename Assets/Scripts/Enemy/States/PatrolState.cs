@@ -85,7 +85,7 @@ namespace EnemyStates
 
             // If we reach here, it means we couldn't find a valid point after 'attempts' tries.
             // Handle this case as needed (e.g., log a warning, default to a safe position, etc.)
-            Debug.LogWarning("Could not find a valid patrol point after multiple attempts.");
+            //Debug.LogWarning("Could not find a valid patrol point after multiple attempts.");
         }
     }
 }
