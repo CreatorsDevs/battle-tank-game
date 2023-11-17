@@ -23,5 +23,3 @@ This project is an exploration of enhancing existing game assets with advanced d
 ## Credits
 
 - Base game assets and tutorials: [Unity's official learning resources](https://learn.unity.com/)
-
-- Design Patterns and Implementation: [CreatorsDevs]
