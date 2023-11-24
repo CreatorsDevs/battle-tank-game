@@ -31,7 +31,7 @@ public class EnemyView : MonoBehaviour, IDamagable
     // Implement visual aspects of the enemy here
     private void OnEnable()
     {
-        Debug.Log("Enemy view created!");
+        //Debug.Log("Enemy view created!");
         AssetManager.Instance.AddEnemyView(this);
         if ((m_NavMeshAgent = GetComponent<NavMeshAgent>()) && EnemyController != null && EnemyController.GetEnemyModel() != null)
         { 
